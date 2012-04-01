@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{# Display all videos #}
+
+{% block content %}
+<h2>All videos</h2>
+<table border="2">
+<b><th>Title</th><th>Status</th></b>
+{% for video in videos %}
+    <tr>
+    <td>{{ video.title }}</td>
+    {% if video.is_available %}
+        <td><form action="/rent/" method="post">
+            <input type="submit" value="Rent now">
+            <input type="hidden" name="id" value="{{ video.id }}">
+        </form></td>
+    {% else %}
+        <td>Rented by {{ video.user }}</td>
+    {% endif %}
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}

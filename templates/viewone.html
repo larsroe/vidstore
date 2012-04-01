@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{# Details about one video #}
+
+{% block content %}
+<h2>Video Details:</h2>
+<table>
+<tr><th>Title</th><th>Status</th></tr>
+<tr><td>{{ video.title }}</td><td>{{ video.status }}</td></tr>
+</table>
+{% endblock %}
