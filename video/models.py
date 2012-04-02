@@ -22,7 +22,8 @@ class Video(models.Model):
         return '' == self.user
 
     def checkoutVideo(self, name):
-        self.user.set(name)
+        print "checking out %s to %s" % (self.title, name)
+        self.user = name
 
     def returnVideo(self):
         self.user.set('')

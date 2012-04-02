@@ -12,8 +12,9 @@ urlpatterns = patterns('',
     (r'^viddetail/(?P<video_id>\d+)/$', 'vidstore.video.views.detail'),
 
     #Check out/return
-    #TODO
+    (r'^rent/$', 'vidstore.video.views.rent'),
 
+    #Log in/out
     (r'^accounts/login/$', login),
     (r'^accounts/logout/$', logout),
 

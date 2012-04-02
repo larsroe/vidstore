@@ -1,6 +1,19 @@
+Description:
 
+Need:
+* A front page that shows a list of videos available at the store 
+* Clicking on a video leads to a detail page for that video that shows one of three rental states (Rented, Available, Rented by You).
+* If a video is available, a button appears, allowing the current user to mark the video "rented" 
+* If a video is rented by the current user, create a button that returns the video 
+* If a video is rented by someone else, display the name of the user who has it. 
+* If clicking a button to rent or return a video, take the user to a login page unless they've already logged in. 
+* Create basic administration interface for User and Video objects. 
+* Use this administration interface to bootstrap your application with data 
 
 
 TODO:
 Checkout and return
-Use logged in user verification
+Use logged in user to return
+tests.py
+Need menu bar at top in base.html
+
