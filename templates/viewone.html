@@ -3,8 +3,30 @@
 
 {% block content %}
 <h2>Video Details:</h2>
-<table>
+<table border="2">
 <tr><th>Title</th><th>Status</th></tr>
-<tr><td>{{ video.title }}</td><td>{{ video.rental_status_str }}</td></tr>
+<tr><td>{{ video.title }}</td>
+    {# TODO: This is copied from viewall.html, how do we only have one copy? #}
+    {% if user.is_authenticated %}
+        {% if video.is_available %}
+            <td><form action="/rent/" method="post">
+                <input type="submit" value="Rent now">
+                <input type="hidden" name="id" value="{{ video.id }}">
+            </form></td>
+        {% else %}
+            {% ifequal video.user user.username %}
+                <td><form action="/return/" method="post">
+                    <input type="submit" value="Return">
+                    <input type="hidden" name="id" value="{{ video.id }}">
+                </form></td>
+            {% else %}
+                <td>Rented by {{ video.user }}</td>
+            {% endifequal %}
+        {% endif %}
+    {% else %}
+        {# If not logged in, just show status #}
+        <td>{{ video.rental_status_str }}</td>
+    {% endif %}
+    </tr>
 </table>
 {% endblock %}

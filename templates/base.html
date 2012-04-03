@@ -2,8 +2,38 @@
 <html lang="en">
 <head><title>{% block title %}Freelancers Video Store{% endblock %}</title></head>
 <body>
+
+{% block login %}
+    {% if user.is_authenticated %}
+        Logged in as {{ user.username }} | <a href="/accounts/logout/">Log out</a>
+    {% else %}
+        Not logged in | <a href="/accounts/login/">Log in</a>
+    {% endif %}
+    <hr>
+{% endblock %}
+
+{% block mainmenu %}
+    <a href="/main/">All Videos</a> | <a href="/admin/">Admin</a>
+    <hr>
+{% endblock %}
+
+{% block status %}
+    {% if status_message %}
+        <em>
+        {% if operation_success %}
+            SUCCESS: {{ status_message }}
+        {% else %}
+            {# TODO: Maybe put this in red? #}
+            ERROR: {{ status_message }}
+        {% endif %}
+        </em>
+        <hr>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 {% endblock %}
+
 </body>
 </html>
 

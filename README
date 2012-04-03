@@ -1,7 +1,7 @@
 Description:
+Basic video store application for renting and returning videos.
 
 Need:
-* A front page that shows a list of videos available at the store 
 * Clicking on a video leads to a detail page for that video that shows one of three rental states (Rented, Available, Rented by You).
 * If a video is available, a button appears, allowing the current user to mark the video "rented" 
 * If a video is rented by the current user, create a button that returns the video 
@@ -12,8 +12,12 @@ Need:
 
 
 TODO:
-Checkout and return
-Use logged in user to return
 tests.py
-Need menu bar at top in base.html
+Need to show status message if checked out or rented successfully.
+If not logged in, the rent/return section should go to login
+For checking out, check that the video was not already checked out.
+For returning, check that the user is the one who checked it out.
+Search for TODO in the code.
+Show state AND button to rent
+POST messages should redirect
 
