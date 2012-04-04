@@ -3,7 +3,6 @@ from django.db import models
 class Video(models.Model):
     """Stores video and status information"""
     # If name is blank, the video is available
-    # TODO: user should be a field of its own
     user = models.CharField(max_length=100, blank=True)
     title = models.CharField(max_length=100)
 
@@ -21,12 +20,17 @@ class Video(models.Model):
         """Returns True iff it is not rented by a user"""
         return '' == self.user
 
-    def checkoutVideo(self, name):
-        print "checking out %s to %s" % (self.title, name)
+    def rent_video(self, name):
+        """Rent video to user with name"""
+        if not self.is_available():
+            raise RuntimeError("Cannot check out video %s, already rented to %s" % (self.title, self.user))
         self.user = name
         self.save()
 
-    def returnVideo(self):
+    def return_video(self, name):
+        """Check out video to user with name"""
+        if unicode(self.user) != unicode(name):
+            raise RuntimeError("User %s cannot return video checked out to user %s" % (name, self.user))
         self.user = ''
         self.save()
 

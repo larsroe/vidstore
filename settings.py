@@ -68,8 +68,6 @@ ROOT_URLCONF = 'vidstore.urls'
 
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'),
-#TODO: Why do I need to add this??
-    '/usr/lib/pymodules/python2.6/django/contrib/auth/admin/templates',
 )
 
 INSTALLED_APPS = (

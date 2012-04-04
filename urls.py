@@ -11,14 +11,14 @@ urlpatterns = patterns('vidstore.video.views',
     (r'^$', 'listall'),
 
     #Detail view about a specific video, uses database ID
-    (r'^viddetail/(\d+)/$', 'detail'),
+    (r'^viddetail/(?P<id>\d+)/$', 'detail'),
 
-    #Check out/return
-    (r'^rent/$', 'rentVideo'),
-    (r'^return/$', 'returnVideo'),
+    #Rent/return videos
+    (r'^rent/$', 'rent_video'),
+    (r'^return/$', 'return_video'),
 
     #Log in/out
-    (r'^accounts/login/$', login),
+    (r'^accounts/$', login),
     (r'^accounts/logout/$', logout),
 
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),

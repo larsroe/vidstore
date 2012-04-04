@@ -8,26 +8,7 @@
 {% for video in videos %}
     <tr>
     <td><a href="/viddetail/{{ video.id }}">{{ video.title }}</a></td>
-    {% if user.is_authenticated %}
-        {% if video.is_available %}
-            <td><form action="/rent/" method="post">
-                <input type="submit" value="Rent now">
-                <input type="hidden" name="id" value="{{ video.id }}">
-            </form></td>
-        {% else %}
-            {% ifequal video.user user.username %}
-                <td><form action="/return/" method="post">
-                    <input type="submit" value="Return">
-                    <input type="hidden" name="id" value="{{ video.id }}">
-                </form></td>
-            {% else %}
-                <td>Rented by {{ video.user }}</td>
-            {% endifequal %}
-        {% endif %}
-    {% else %}
-        {# If not logged in, just show status #}
-        <td>{{ video.rental_status_str }}</td>
-    {% endif %}
+    <td>{{ video.rental_status_str }}</td>
     </tr>
 {% endfor %}
 </table>

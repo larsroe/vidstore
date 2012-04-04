@@ -13,33 +13,29 @@ def detail(request, id):
         video = Video.objects.get(id=id)
         return render_to_response('viewone.html', locals())
     except KeyError:
+        errors = ["Could not retrieve video details"]
         return render_to_response('viewone.html', locals())
 
-def rentVideo(request):
+def rent_video(request):
     user = request.user
     try:
-        #TODO: Ensure that it is not already checked out
         video = Video.objects.get(id=request.POST['id'])
-        print "user is %s" % user.username
-        video.checkoutVideo(user.username)
-        status_message = "Successfully rented %s" % video.title
-        operation_success = True
+        video.rent_video(user.username)
+        messages = [ "Successfully rented %s" % video.title ]
         return render_to_response('viewone.html', locals())
     except KeyError:
-        status_message = "Could not rent %s" % video.title
+        errors = ["Could not rent %s" % video.title ]
         return render_to_response('viewone.html', locals())
 
-def returnVideo(request):
+def return_video(request):
     user = request.user
     try:
-        #TODO: Ensure that it user is the same one who has it checked out
         video = Video.objects.get(id=request.POST['id'])
-        video.returnVideo()
-        status_message = "Successfully returned %s" % video.title
-        operation_success = True
+        video.return_video(user)
+        messages = ["Successfully returned %s" % video.title]
         return render_to_response('viewone.html', locals())
     except KeyError:
-        status_message = "Unable to return %s" % video.title
+        errors = ["Unable to return %s" % video.title]
         return render_to_response('viewone.html', locals())
 
 

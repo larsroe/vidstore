@@ -10,14 +10,6 @@ Need:
 * Create basic administration interface for User and Video objects. 
 * Use this administration interface to bootstrap your application with data 
 
-
 TODO:
-tests.py
-Need to show status message if checked out or rented successfully.
-If not logged in, the rent/return section should go to login
-For checking out, check that the video was not already checked out.
-For returning, check that the user is the one who checked it out.
-Search for TODO in the code.
-Show state AND button to rent
-POST messages should redirect
+POST messages should redirect?
 
